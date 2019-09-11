@@ -50,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
 // set partner parameters
                 String environment = "uat";
                 String developer_key = "becbbce45f79c6f5109f848acd540567";
-                String initiator_id  = "9962981729";
-                String user_code = "20810200";
+                String initiator_id  = "7411111111";
+                String user_code = "20310001";
                 String initiator_logo_url = "https://files.eko.co.in:8080/docs/logos/payment/dummy-partner-logo.png";
                 String partner_name = "PARTNER Name INC";
                 String language = "en";
-                String secret_key_timestamp =  "";
-// generate secret_key_timestamp dynamically on server
-                String secret_key = "";
+                String secret_key_timestamp =  "1568204762953";// generate secret_key_timestamp dynamically on server
+                String secret_key = "NqdsFdmDgBjUxI1nrSW4gGbXEwGtCxmPJwOdBi0oZAY=";
 // generate secret_key  dynamically on server
 
+                String callback_url = "https://beta.ekoconnect.in:20011/connect/callback";
 
                 bundle.putString("environment", environment);
 // Optional
@@ -70,6 +70,35 @@ public class MainActivity extends AppCompatActivity {
 // mandatory
 
 
+
+                bundle.putString("secret_key_timestamp", secret_key_timestamp);
+// mandatory
+
+                bundle.putString("secret_key", secret_key);
+// mandatory
+
+                bundle.putString("developer_key", developer_key);
+// mandatory
+
+                bundle.putString("initiator_id", initiator_id);
+// mandatory
+
+
+                bundle.putString("callback_url", callback_url);
+// mandatory
+
+                bundle.putString("user_code", user_code);
+// mandatory
+
+
+                bundle.putString("initiator_logo_url", initiator_logo_url);
+// mandatory
+
+                bundle.putString("partner_name" , partner_name);
+// mandatory
+
+
+                bundle.putString("language", language);
 
 
                 System.out.println("BUTTON CLICKED...............");
