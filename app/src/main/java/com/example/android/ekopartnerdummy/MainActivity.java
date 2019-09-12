@@ -55,9 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 String initiator_logo_url = "https://files.eko.co.in:8080/docs/logos/payment/dummy-partner-logo.png";
                 String partner_name = "PARTNER Name INC";
                 String language = "en";
-                String secret_key_timestamp =  "1568204762953";// generate secret_key_timestamp dynamically on server
-                String secret_key = "NqdsFdmDgBjUxI1nrSW4gGbXEwGtCxmPJwOdBi0oZAY=";
-// generate secret_key  dynamically on server
+                String secret_key_timestamp =  "1568274099712";
+
+                String secret_key = "ZZWwfI1d0W3SC7XAiPh0g5xFXVZO/PJhRyXAB2mwR+w=";
+
 
                 String callback_url = "https://beta.ekoconnect.in:20011/connect/callback";
 

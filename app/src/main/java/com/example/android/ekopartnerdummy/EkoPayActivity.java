@@ -441,6 +441,13 @@ public class EkoPayActivity extends AppCompatActivity {
         @Override
         public void onGeolocationPermissionsShowPrompt(final String origin, final GeolocationPermissions.Callback callback) {
 
+;
+            System.out.println("VVVVVVVVVVV AAAAAAA VVVVVVVVVVVVVVVVVVVV 1 VVVVVVVVVVVVVVVVVVVVVVVV");
+            System.out.println("VVVVVVVVVVV AAAAAAA VVVVVVVVVVVVVVVVVVVV 2 VVVVVVVVVVVVVVVVVVVVVVVV");
+            System.out.println("VVVVVVVVVVV AAAAAAA VVVVVVVVVVVVVVVVVVVV 3 VVVVVVVVVVVVVVVVVVVVVVVV");
+            System.out.println("VVVVVVVVVVV AAAAAAA VVVVVVVVVVVVVVVVVVVV 4 VVVVVVVVVVVVVVVVVVVVVVVV");
+
+
             mGeolocationRequestOrigin = null;
             mGeolocationCallback = null;
 
@@ -618,6 +625,72 @@ public class EkoPayActivity extends AppCompatActivity {
             sendWebViewResponse("rdservice_resp", b.getString("PID_DATA", ""));
 
             Log.i(TAG, "onRDServiceCaptureResponse: Capture Info: \n\n PID-DATA = " + b.getString("PID_DATA", "") + "    \n\nDeviceNotConnected = " + b.getString("DNC", ""));
+        }
+    }
+
+
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+    {
+
+        System.out.print("CCCCCCCCC 1 CCCCCCCCCCCCCCCC..............CCCCCCCCCCCCCCCCCCCCCCCCC");;
+
+        switch (requestCode)
+        {
+            case MY_PERMISSION_REQUEST_LOCATION: {
+
+
+                System.out.print("CCCCCCCCC 1 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");;
+
+                System.out.print("CCCCCCCCCCCCCC 2 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");;
+                System.out.print("CCCCCCCCCCCCCCCCCCCCCCCC 3 CCCCCCCCCCCCCCCCCCCCCCCCCC");;
+                System.out.print("CCCCCCCCCCCCCCCCCCCCC 4 CCCCCCCCCCCCCCCCCCCCCCCCCCCCC");;
+
+
+
+
+                // If request is cancelled, the result arrays are empty
+
+//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//
+//                    // Permission was grated!
+//                    if (mGeolocationRequestOrigin != null) {
+//                        mGeolocationCallback.invoke(mGeolocationRequestOrigin, true, true);
+//                    }
+//                } else {
+//
+//                    // Permission denied...disable functionality that depends on this permission
+//                    mGeolocationCallback.invoke(mGeolocationRequestOrigin, true, true);
+//                }
+            }
+            break;
+
+            case MY_PERMISSION_REQUEST_CAMERA: {
+                // If request is cancelled, the result arrays are empty
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // Permission was grated!
+                    // mPermissionRequest.grant(new String[]{Manifest.permission.CAMERA});
+                    // mPermissionRequest.grant(permissions);
+                    if (mRequestedResources.length > 0) {
+                        mPermissionRequest.grant(mRequestedResources);
+                    } else {
+                        mPermissionRequest.grant(new String[]{Manifest.permission.CAMERA});
+                    }
+                    Log.d(TAG, "Permission granted.");
+                } else {
+
+                    // Permission denied...disable functionality that depends on this permission
+                    mPermissionRequest.deny();
+                    Log.d(TAG, "Permission request denied.");
+                }
+            }
+            break;
+
+            // Handle other permissions that may be requested by the web app by adding corresponding cases
         }
     }
 
