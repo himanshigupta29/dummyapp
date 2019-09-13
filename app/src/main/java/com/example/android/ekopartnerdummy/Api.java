@@ -8,9 +8,10 @@ import retrofit2.http.GET;
 
 
 public interface Api {
-    String BASE_URL = "https://simplifiedcoding.net/demos/";
+    String BASE_URL = "https://beta.ekoconnect.in:20011/";
 
-    @GET("marvel")
-    Call<List<GatewayCredential>> getHeroes();
+    @GET("aeps/ekogateway/params")
+    Call<ParamsResponse> getParams();
 }
+
 

@@ -9,19 +9,64 @@ import android.view.View;
 
 import android.content.Intent;
 
+import android.widget.TextView;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private Button buttonSum;
+    private Button buttonSum, btnFetchParams;
+    private ParamsResponse paramsData;
+    private TextView tvStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        buttonSum = (Button) findViewById(R.id.button_send);
+        btnFetchParams = (Button) findViewById(R.id.btnFetchParams);
+        tvStatus = (TextView) findViewById(R.id.status);
         addListenerOnButton();
 
+        btnFetchParams.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvStatus.setText("Fetching");
+                fetchParams();
+            }
+        });
+
+
+    }
+
+    private void fetchParams() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
+                .build();
+
+        Api api = retrofit.create(Api.class);
+
+        Call<ParamsResponse> call = api.getParams();
+
+        call.enqueue(new Callback<ParamsResponse>() {
+            @Override
+            public void onResponse(Call<ParamsResponse> call, Response<ParamsResponse> response) {
+                tvStatus.setText("Done");
+                paramsData = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<ParamsResponse> call, Throwable t) {
+                tvStatus.setText("Failed");
+            }
+        });
     }
 
 
@@ -29,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("===========================================");
 
-        buttonSum = (Button) findViewById(R.id.button_send);
 
         buttonSum.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,34 +116,34 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                bundle.putString("secret_key_timestamp", secret_key_timestamp);
+                bundle.putString("secret_key_timestamp", paramsData.getSecretKeyTimestamp());
 // mandatory
 
-                bundle.putString("secret_key", secret_key);
+                bundle.putString("secret_key", paramsData.getSecretKey());
 // mandatory
 
-                bundle.putString("developer_key", developer_key);
+                bundle.putString("developer_key", paramsData.getDeveloperKey());
 // mandatory
 
-                bundle.putString("initiator_id", initiator_id);
-// mandatory
-
-
-                bundle.putString("callback_url", callback_url);
-// mandatory
-
-                bundle.putString("user_code", user_code);
+                bundle.putString("initiator_id", paramsData.getInitiatorId());
 // mandatory
 
 
-                bundle.putString("initiator_logo_url", initiator_logo_url);
+                bundle.putString("callback_url", paramsData.getCallbackUrl());
 // mandatory
 
-                bundle.putString("partner_name" , partner_name);
+                bundle.putString("user_code", paramsData.getUserCode());
 // mandatory
 
 
-                bundle.putString("language", language);
+                bundle.putString("initiator_logo_url", paramsData.getInitiatorLogoUrl());
+// mandatory
+
+                bundle.putString("partner_name" , paramsData.getPartnerName());
+// mandatory
+
+
+                bundle.putString("language", paramsData.getLanguage());
 
 
                 System.out.println("BUTTON CLICKED...............");
@@ -108,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                startActivityForResult(intent, AEPS_REQUEST_CODE);
+                startActivity(intent);
 
 
             }

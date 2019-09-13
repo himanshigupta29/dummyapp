@@ -16,4 +16,21 @@
         />
 
 
+    <Button
+        android:id="@+id/btnFetchParams"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Launch Params"
+        />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
+
+
+
 </android.support.constraint.ConstraintLayout>
