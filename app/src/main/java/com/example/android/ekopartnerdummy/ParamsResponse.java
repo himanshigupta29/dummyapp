@@ -1,17 +1,43 @@
 package com.example.android.ekopartnerdummy;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ParamsResponse {
+
+    @SerializedName("callback_url")
     private String callbackUrl;
+
+    @SerializedName("secret_key_timestamp")
     private String secretKey;
+
+    @SerializedName("user_code")
     private String userCode;
+
+    @SerializedName("initiator_id")
     private String initiatorId;
+
+    @SerializedName("callback_url_custom_headers")
     private CallbackUrlCustomHeaders callbackUrlCustomHeaders;
+
+    @SerializedName("gateway_url")
     private String gatewayUrl;
+
+    @SerializedName("partner_name")
     private String partnerName;
+
+    @SerializedName("secret_key_timestamp")
     private String secretKeyTimestamp;
+
+    @SerializedName("developer_key")
     private String developerKey;
+
+    @SerializedName("initiator_logo_url")
     private String initiatorLogoUrl;
+
+    @SerializedName("language")
     private String language;
+
+    @SerializedName("callback_url_custom_params")
     private CallbackUrlCustomParams callbackUrlCustomParams;
 
     public void setCallbackUrl(String callbackUrl){
