@@ -7,7 +7,7 @@ public class ParamsResponse {
     @SerializedName("callback_url")
     private String callbackUrl;
 
-    @SerializedName("secret_key_timestamp")
+    @SerializedName("secret_key")
     private String secretKey;
 
     @SerializedName("user_code")
