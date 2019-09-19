@@ -259,6 +259,8 @@ public class EkoPayActivity extends AppCompatActivity {
         }
         webView.setWebViewClient(new MyWebViewClient());
         webView.addJavascriptInterface(new WebAppInterface(this), "Android");
+        System.out.println("ccccccccccccccccccccccc");
+
         webView.setWebChromeClient(new ConnectWebChromeClient());
         webView.setDownloadListener(new DownloadListener() {
             @Override
@@ -630,41 +632,52 @@ public class EkoPayActivity extends AppCompatActivity {
 
 
 
+    // ===================================================================================================
 
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
     {
 
-        System.out.print("CCCCCCCCC 1 CCCCCCCCCCCCCCCC..............CCCCCCCCCCCCCCCCCCCCCCCCC");;
+        System.out.println("VVVVVVVVVVV ccccccccccccccccc VVVVVVVVVVVVVVVVVVVV 1 VVVVVVVVVVVVVVVVVVVVVVVV");
+
 
         switch (requestCode)
         {
             case MY_PERMISSION_REQUEST_LOCATION: {
 
 
-                System.out.print("CCCCCCCCC 1 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");;
-
-                System.out.print("CCCCCCCCCCCCCC 2 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");;
-                System.out.print("CCCCCCCCCCCCCCCCCCCCCCCC 3 CCCCCCCCCCCCCCCCCCCCCCCCCC");;
-                System.out.print("CCCCCCCCCCCCCCCCCCCCC 4 CCCCCCCCCCCCCCCCCCCCCCCCCCCCC");;
-
-
-
-
                 // If request is cancelled, the result arrays are empty
 
-//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//
-//                    // Permission was grated!
-//                    if (mGeolocationRequestOrigin != null) {
-//                        mGeolocationCallback.invoke(mGeolocationRequestOrigin, true, true);
-//                    }
-//                } else {
-//
-//                    // Permission denied...disable functionality that depends on this permission
-//                    mGeolocationCallback.invoke(mGeolocationRequestOrigin, true, true);
-//                }
+
+                System.out.println("VVVVVVVVVVV ccccccccccccccccc VVVVVVVVVV");
+
+                System.out.println("VVVVVVVVVVV ccccccccccccccccc VVVVVVVVVV" + grantResults.length);
+
+                System.out.println("VVVVVVVVVVV ccccccccccccccccc VVVVVVVVVV");
+
+
+
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    System.out.println("VVVVVVVVVVV ccccccccccccccccc if 1 VVVVVVVVVVVVVVVVVVVVVVVV");
+
+
+                    // Permission was grated!
+                    if (mGeolocationRequestOrigin != null) {
+
+                        System.out.println("VVVVVVVVVVV ccccccccccccccccc if  if 2 1 VVVVVVVVVVVVVVVVVVVVVVVV");
+
+                        mGeolocationCallback.invoke(mGeolocationRequestOrigin, true, true);
+                    }
+                } else {
+
+                    System.out.println("VVVVVVVVVVV ccccccccccccccccc else 1 VVVVVVVVVVVVVVVVVVVVVVVV");
+
+
+                    // Permission denied...disable functionality that depends on this permission
+                    mGeolocationCallback.invoke(mGeolocationRequestOrigin, true, true);
+                }
             }
             break;
 
@@ -682,6 +695,7 @@ public class EkoPayActivity extends AppCompatActivity {
                     }
                     Log.d(TAG, "Permission granted.");
                 } else {
+
 
                     // Permission denied...disable functionality that depends on this permission
                     mPermissionRequest.deny();
