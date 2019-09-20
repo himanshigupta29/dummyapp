@@ -99,13 +99,6 @@ public class EkoPayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        System.out.println("............. EKOPAY ...1.......1111.................");
-        System.out.println("................... EKOPAY ...1..........222222.................");
-        System.out.println("................... EKOPAY ...1.......3333333....................");
-        System.out.println("................ EKOPAY ...1..............................");
-        System.out.println("............... EKOPAY ...1...........444444....................");
-        System.out.println("............. EKOPAY ...1.................................");
-        System.out.println(".............. EKOPAY ...1.........55555555555555555.......................");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eko_pay);
@@ -142,6 +135,7 @@ public class EkoPayActivity extends AppCompatActivity {
         JSONObject source = new JSONObject();
         try {
             source.put("device", "Android");
+            source.put("android_sdk_version", "1.2.0");
             source.put("initiator_id", initiator_id);
             source.put("developer_key", developer_key);
             source.put("secret_key", secret_key);
@@ -158,12 +152,6 @@ public class EkoPayActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        System.out.println("..............  ooooooooooooooooooooooooo oooooooooooooooooooooooo oooooooooooooooooo ...........");
-
-        System.out.println(url);
-
-        System.out.println("..............  ooooooooooooooooooooooooo oooooooooooooooooooooooo oooooooooooooooooo ...........");
 
 
         String data = null;
